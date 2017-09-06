@@ -15,10 +15,10 @@
 ![type1](https://github.com/yatou252303/Nydialog/blob/master/image/nydIALOG.png)
 
 ### 样式1
-![type1](https://github.com/yatou252303/Nydialog/tree/master/image/circle.png)
+![type1](https://github.com/yatou252303/Nydialog/blob/master/image/circle.png)
 
 ### 样式2
-![type2](https://github.com/yatou252303/Nydialog/raw/tree/master/image/xb.png)
+![type2](https://github.com/yatou252303/Nydialog/blob/master/image/image/xb.png)
 ### 样式3
-![type3](https://github.com/yatou252303/Nydialog/tree/master/image/list.png)
+![type3](https://github.com/yatou252303/Nydialog/blob/master/image/list.png)
 
