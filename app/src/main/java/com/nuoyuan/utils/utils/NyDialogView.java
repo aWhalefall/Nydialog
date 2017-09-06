@@ -2,7 +2,7 @@
  * File Name: EtaoShiDialogView.java 
  * History:
  * Created by LiBingbing on 2013-9-6
- * modify by NuoyuanTeam
+ * modify by NuoyuanTeam 2017-9-6
  */
 package com.nuoyuan.utils.utils;
 
@@ -65,14 +65,15 @@ public class NyDialogView extends RelativeLayout {
 
     private View mTitleDividerHView;
     private View mCancelBottomView;
-    //3  4  7 10  33
-    private final int ViewID_3 = 3;
-    private final int ViewID_4 = 4;
-    private final int ViewID_7 = 7;
-    private final int ViewID_10 = 10;
-    private final int ViewID_33 = 33;
-    private final int View_ID_44 = 44;
-    private final int View_ID_55 = 55;
+
+    private final int ViewID_3 = R.id.rela_group_title;
+    private final int ViewID_4 = R.id.view_title_divider;
+    private final int ViewID_7 = R.id.view_bottom_divider;
+    private final int ViewID_10 = R.id.line_bottom_area;
+    private final int ViewID_33 = R.id.custom_view;
+    private final int View_ID_44 = R.id.cancel_bottom_view;
+    private final int View_ID_55 = R.id.visible_area;
+
     public static int setheight = 0;
     public static int setWidth = 0;
     private LinearLayout.LayoutParams mContainerLp;

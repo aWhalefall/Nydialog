@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.nuoyuan.utils.adapter.InnerWaitPayment;
-import com.nuoyuan.utils.adapter.ListAdapter;
 import com.nuoyuan.utils.utils.DialogUtils;
-import com.nuoyuan.utils.utils.NyDialog;
 
 import java.util.ArrayList;
 
