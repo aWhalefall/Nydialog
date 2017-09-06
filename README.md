@@ -11,10 +11,13 @@
 
 2.增加透明dialog。类似自定义toast 效果。
 
+### 框架结构图
+![type1](https://github.com/yatou252303/Nydialog/tree/master/image/nydIALOG.png?raw=true)
+
 ### 样式1
-![type1](https://github.com/githubhaohao/ImageRoom/blob/master/Images/mvvm/mvp.png?raw=true)
+![type1](https://github.com/yatou252303/Nydialog/tree/master/image/circle.png?raw=true)
 
 ### 样式2
-![type2](https://github.com/githubhaohao/ImageRoom/blob/master/Images/mvvm/mvp.png?raw=true)
+![type2](https://github.com/yatou252303/Nydialog/tree/master/image/xb.png?raw=true)
 ### 样式3
-![type3](https://github.com/githubhaohao/ImageRoom/blob/master/Images/mvvm/mvp.png?raw=true)
+![type3](https://github.com/yatou252303/Nydialog/tree/master/image/list.png?raw=true)
