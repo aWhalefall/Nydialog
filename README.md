@@ -8,5 +8,13 @@
 后期规划version 预计 9/10 前
 
 1.增加加载框dialog
+
 2.增加透明dialog。类似自定义toast 效果。
 
+### 样式1
+![type1](https://github.com/githubhaohao/ImageRoom/blob/master/Images/mvvm/mvp.png?raw=true)
+
+### 样式2
+![type2](https://github.com/githubhaohao/ImageRoom/blob/master/Images/mvvm/mvp.png?raw=true)
+### 样式3
+![type3](https://github.com/githubhaohao/ImageRoom/blob/master/Images/mvvm/mvp.png?raw=true)
