@@ -18,7 +18,7 @@
 ![type1](https://github.com/yatou252303/Nydialog/blob/master/image/circle.png)
 
 ### 样式2
-![type2](https://github.com/yatou252303/Nydialog/blob/master/image/image/xb.png)
+![type2](https://github.com/yatou252303/Nydialog/blob/master/image/xb.png)
 ### 样式3
 ![type3](https://github.com/yatou252303/Nydialog/blob/master/image/list.png)
 
