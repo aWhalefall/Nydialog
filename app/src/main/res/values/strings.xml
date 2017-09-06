@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NyDialog</string>
+    <string name="time_title_hint">温馨提示</string>
+</resources>
