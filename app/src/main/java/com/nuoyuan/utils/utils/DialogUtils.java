@@ -9,6 +9,7 @@ import com.nuoyuan.utils.adapter.ListAdapter;
 
 import java.util.ArrayList;
 
+
 /**
  * Created by weichyang on 2017/9/6.
  */
