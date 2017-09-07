@@ -21,4 +21,6 @@
 ![type2](https://github.com/yatou252303/Nydialog/blob/master/image/xb.png)
 ### 样式3
 ![type3](https://github.com/yatou252303/Nydialog/blob/master/image/list.png)
+### 样式4
+![type3](https://github.com/yatou252303/Nydialog/blob/master/image/transport.png)
 
