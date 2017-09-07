@@ -74,8 +74,8 @@ public class NyDialogView extends RelativeLayout {
     private final int View_ID_44 = R.id.cancel_bottom_view;
     private final int View_ID_55 = R.id.visible_area;
 
-    public static int setheight = 0;
-    public static int setWidth = 0;
+    public int setheight = 0;
+    public int setWidth = 0;
     private LinearLayout.LayoutParams mContainerLp;
 
     // ==========================================================================
@@ -89,8 +89,8 @@ public class NyDialogView extends RelativeLayout {
 
     public NyDialogView(Activity activity, int w, int h) {
         super(activity);
-        setheight = h;
-        setWidth = w;
+        setheight = dip2px(activity, h);
+        setWidth = dip2px(activity, w);
         mActivity = activity;
         initLayout();
     }
@@ -278,6 +278,9 @@ public class NyDialogView extends RelativeLayout {
      */
     public void setContainerBackground(int color) {
         mContainer.setBackgroundColor(color);
+    }
+    public void setContainerBackgroundResource(int color) {
+        mContainer.setBackgroundResource(color);
     }
 
     public void setBuilderSize(int w, int h) {

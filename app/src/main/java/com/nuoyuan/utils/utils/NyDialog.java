@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.EditText;
@@ -38,6 +39,15 @@ public class NyDialog extends Dialog {
     // ==========================================================================
     public NyDialog(Activity activity) {
         super(activity);
+        mActivity = activity;
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        setCanceledOnTouchOutside(false);
+    }
+
+
+    public NyDialog(Activity activity, int themeResId) {
+        super(activity, themeResId);
         mActivity = activity;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setBackgroundDrawableResource(android.R.color.transparent);
@@ -75,6 +85,7 @@ public class NyDialog extends Dialog {
         private DialogInterface.OnClickListener mNegativeClickListener;
 
         private DialogInterface.OnCancelListener mCancelClickListener;
+
 
         /**
          * 改变diglog整体大小
@@ -178,6 +189,10 @@ public class NyDialog extends Dialog {
             this.refreshImg = refreshImg;
         }
 
+        public void setThrouth(int tt) {
+            mDialog = new NyDialog(mActivity, tt);
+        }
+
         /**
          * 获取图形CODE-短信模块专用
          */
@@ -222,6 +237,10 @@ public class NyDialog extends Dialog {
             mActivity = (Activity) activity;
             mDialog = new NyDialog(mActivity);
             mDialog.mView = new NyDialogView(mActivity);
+            initDialogView();
+        }
+
+        private void initDialogView() {
             mDialog.mView.setPositiveButtonText(android.R.string.ok);
             mDialog.mView.setPositiveButtonListener(new View.OnClickListener() {
 
@@ -278,6 +297,20 @@ public class NyDialog extends Dialog {
             mDialog.setContentView(mDialog.mView);
             mDialog.getWindow().setLayout(LayoutParams.WRAP_CONTENT,
                     LayoutParams.WRAP_CONTENT);
+        }
+
+        public Builder(Context activity, int theme) {
+            mActivity = (Activity) activity;
+            mDialog = new NyDialog(mActivity, theme);
+            mDialog.mView = new NyDialogView(mActivity);
+            initDialogView();
+        }
+
+        public Builder(Context activity, int w, int h, int theme) {
+            mActivity = (Activity) activity;
+            mDialog = new NyDialog(mActivity, theme);
+            mDialog.mView = new NyDialogView(mActivity, w, h);
+            initDialogView();
         }
 
         public Builder setBackgroundColor(int resID) {
@@ -355,8 +388,9 @@ public class NyDialog extends Dialog {
         }
 
         /**
-         *  set top title  textview color
-         * @param color  title text color
+         * set top title  textview color
+         *
+         * @param color title text color
          * @return
          */
         public Builder setTitleColor(int color) {
@@ -412,7 +446,8 @@ public class NyDialog extends Dialog {
         }
 
         /**
-         *  set confirm btn listener
+         * set confirm btn listener
+         *
          * @param l interface callback
          * @return
          */
@@ -424,6 +459,7 @@ public class NyDialog extends Dialog {
 
         /**
          * 确认按钮 color
+         *
          * @param color
          * @return
          */
@@ -458,7 +494,8 @@ public class NyDialog extends Dialog {
         }
 
         /**
-         *  中性的按钮
+         * 中性的按钮
+         *
          * @param l
          * @return
          */
@@ -480,8 +517,9 @@ public class NyDialog extends Dialog {
         }
 
         /**
-         *  set cancel btn textValue
-         * @param textResId  Text资源id
+         * set cancel btn textValue
+         *
+         * @param textResId Text资源id
          * @return
          */
         public Builder setNegativeButtonText(int textResId) {
@@ -490,7 +528,8 @@ public class NyDialog extends Dialog {
         }
 
         /**
-         *  ['negətɪv]  取消按钮
+         * ['negətɪv]  取消按钮
+         *
          * @param text
          * @return
          */
@@ -503,6 +542,7 @@ public class NyDialog extends Dialog {
 
         /**
          * 取消按钮监听回调
+         *
          * @param l
          * @return
          */
@@ -523,7 +563,8 @@ public class NyDialog extends Dialog {
         }
 
         /**
-         *  添加内容到的中间自定义区域
+         * 添加内容到的中间自定义区域
+         *
          * @param text
          * @return
          */
@@ -536,8 +577,9 @@ public class NyDialog extends Dialog {
 
         /**
          * 中间内容区域
-         * @param text  内容
-         * @param scrollable  超出范围是否可以滚动
+         *
+         * @param text       内容
+         * @param scrollable 超出范围是否可以滚动
          * @return
          */
         public Builder setTextContent(CharSequence text, boolean scrollable) {
@@ -577,6 +619,11 @@ public class NyDialog extends Dialog {
 
         public Builder setContainerBackground(int color) {
             mDialog.mView.setContainerBackground(color);
+            return this;
+        }
+
+        public Builder setContainerBackgroundResource(int color) {
+            mDialog.mView.setContainerBackgroundResource(color);
             return this;
         }
 

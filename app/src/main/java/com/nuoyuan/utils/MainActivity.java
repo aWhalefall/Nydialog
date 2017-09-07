@@ -57,6 +57,9 @@ public class MainActivity extends Activity {
 
         }
         DialogUtils.modelThree(this, dealList);
+    }
 
+    public void transportdialog(View view) {
+        DialogUtils.modelTransportDialog(this);
     }
 }
