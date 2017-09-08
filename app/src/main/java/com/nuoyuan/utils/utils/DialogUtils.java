@@ -5,11 +5,17 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nuoyuan.utils.R;
 import com.nuoyuan.utils.adapter.InnerWaitPayment;
@@ -157,4 +163,51 @@ public class DialogUtils {
         dialog.onWindowAttributesChanged(wl);
         builder.create().show();
     }
+
+    public static void loadingDialog(Activity activity, View view) {
+        NyDialog.Builder builder = new NyDialog.Builder(activity, 250, 140);
+        builder.setTitleVisible(false);
+        builder.setBottomViableAreaVisible(false);
+        builder.setmBottomDividerVisiable(View.GONE).setTitleDividerColor(activity.getResources().getColor(R.color.main_color_white));
+        builder.setCancelBottomViewVisible(false);
+//      builder.setTextContent("中间弹窗").setContainerBackground(R.color.main_color_white);
+        builder.setContainerBackgroundResource(R.drawable.circle_bg);
+        builder.setContentView(view);
+        Dialog dialog = builder.create();
+
+        Window window = dialog.getWindow();
+
+        // 设置显示动画
+        //window.setWindowAnimations(R.style.SlipDialogAnimation);
+        WindowManager.LayoutParams wl = window.getAttributes();
+        wl.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        wl.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        // 设置显示位置
+        dialog.onWindowAttributesChanged(wl);
+        builder.create().show();
+    }
+
+    public static void showPhoneDialog(final Activity activity, final String phoneNumber) {
+        View view = activity.getLayoutInflater().inflate(R.layout.dialog_callserveshotline, null);
+        NyDialog.Builder builder = new NyDialog.Builder(activity);
+        TextView hotlinePhonenumber_tv = (TextView) view.findViewById(R.id.hotlinePhonenumber_tv);
+        builder.setBottomViableAreaVisible(false).setTitleVisible(false).setCancelBottomViewVisible(false);
+        hotlinePhonenumber_tv.setText(phoneNumber);
+        Dialog dialog = builder.create();
+        dialog.setContentView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        Window window = dialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        // 设置显示动画
+        window.setWindowAnimations(R.style.SlipDialogAnimation);
+        WindowManager.LayoutParams wl = window.getAttributes();
+        wl.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        wl.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        // 设置显示位置
+        dialog.onWindowAttributesChanged(wl);
+        // 设置点击外围解散
+
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+    }
+
 }

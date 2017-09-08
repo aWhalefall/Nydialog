@@ -62,4 +62,12 @@ public class MainActivity extends Activity {
     public void transportdialog(View view) {
         DialogUtils.modelTransportDialog(this);
     }
+
+    public void loading(View view) {
+        DialogUtils.loadingDialog(this,View.inflate(this,R.layout.view_progress_layout,null));
+    }
+
+    public void callPhone(View view) {
+        DialogUtils.showPhoneDialog(this,"400-828-8282");
+    }
 }

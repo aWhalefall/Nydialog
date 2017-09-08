@@ -48,12 +48,30 @@
         tools:layout_editor_absoluteY="92dp"/>
 
     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="loading"
+        android:text="Loading"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="92dp"/>
+
+    <Button
         android:id="@+id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:onClick="listDialog"
         android:text="LIstButton"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="356dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="callPhone"
+        android:text="打电话"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="57dp"
         tools:layout_editor_absoluteY="356dp"/>
