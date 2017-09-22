@@ -11,6 +11,8 @@ version 1 后期规划version 预计 9/10 前
 
 2.增加透明dialog。类似自定义toast 效果。
 
+1.1 增加构建gradle脚本，debug自增version-name 打
+resease 自动增加version_code
 
 version 2 规划 预计10月份
 

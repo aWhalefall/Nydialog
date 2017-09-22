@@ -1,5 +1,61 @@
 apply plugin: 'com.android.application'
 
+
+
+ext { // 定义当前gradle文件的全局变量
+    isRelease = checkRelease()
+}
+
+// 通过taskName判断当前操作是否是在打release包，只需执行一次
+def checkRelease() {
+    def runTasks = gradle.startParameter.taskNames
+    for (String task : runTasks) {
+        // 这里认为执行“assemble”和非“debug”的任务就是执行“release”的任务
+        if (task.contains("assemble") && !task.contains("Debug") ) {
+            return true
+        }
+    }
+    return false
+}
+
+// 自增 version code
+def autoAddVersionCode() {
+    def propFile = file('../auto_code.properties')
+    Properties props = new Properties()
+    props.load(new FileInputStream(propFile))
+    // 读取gradle.properties文件中定义的VERSION_CODE属性
+    def code = props['VERSION_CODE'].toInteger()
+    if (checkRelease()) {
+        code++
+        props['VERSION_CODE'] = code.toString()
+        ext.tt = code.toString()
+        println("-----------------------------")
+        // 将最新的versionCode写入gradle.properties文件中
+        props.store(propFile.newWriter(), null)
+    } else {
+        isRelease = false;
+    }
+    return code
+}
+
+def autoAddVersionName() {
+    def propFile = file('../auto_code.properties')
+    def Properties props = new Properties()
+    props.load(new FileInputStream(propFile))
+    // 读取gradle.properties文件中定义的VERSION_CODE属性
+    def code = props['VERSION_NAME'].toString()
+    if (!isRelease) {
+        def pointIndex = code.lastIndexOf(".")
+        def tempInt = code.substring(pointIndex + 1, code.length()).toInteger();
+        tempInt++
+        props['VERSION_NAME'] = code.substring(0, pointIndex + 1) + tempInt.toString()
+        // 将最新的versionCode写入gradle.properties文件中
+        ext.ff = code.substring(0, pointIndex + 1) + tempInt.toString()
+        props.store(propFile.newWriter(), null)
+    }
+    return code
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -7,8 +63,8 @@ android {
         applicationId "com.nuoyuan.utils"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode autoAddVersionCode()
+        versionName autoAddVersionName();
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -17,7 +73,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    android.applicationVariants.all { variant ->
+        // 仅修改正式包
+        variant.outputs.each { output ->
+            output.outputFile = new File(output.outputFile.parent,
+                    "Nydialog-v" + defaultConfig.versionName +
+                            "-build-" + defaultConfig.versionCode +
+                            "-" + buildType.name + ".apk")
+            variant.println(output.outputFile.parent + "")
+
+        }
+    }
 }
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
