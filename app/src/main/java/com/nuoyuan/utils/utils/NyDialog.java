@@ -10,33 +10,19 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListAdapter;
-import android.widget.RelativeLayout;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class NyDialog extends Dialog {
 
-    // ==========================================================================
-    // Constants
-    // ==========================================================================
 
-    // ==========================================================================
-    // Fields
-    // ==========================================================================
     private Activity mActivity;
+
     protected NyDialogView mView;
 
-    // ==========================================================================
-    // Constructors
-    // ==========================================================================
+
     public NyDialog(Activity activity) {
         super(activity);
         mActivity = activity;
@@ -54,9 +40,7 @@ public class NyDialog extends Dialog {
         setCanceledOnTouchOutside(false);
     }
 
-    // ==========================================================================
-    // Getters
-    // ==========================================================================
+
     public Activity getActivity() {
         return mActivity;
     }
@@ -65,13 +49,6 @@ public class NyDialog extends Dialog {
         return mView;
     }
 
-    // ==========================================================================
-    // Setters
-    // ==========================================================================
-
-    // ==========================================================================
-    // Methods
-    // ==========================================================================
     public static class Builder {
 
         private Activity mActivity;
@@ -110,7 +87,7 @@ public class NyDialog extends Dialog {
                 }
 
             });
-            mDialog.mView.setNeutralButtonText("dd");
+            mDialog.mView.setNeutralButtonText("");
             mDialog.mView.setNeutralButtonListener(new View.OnClickListener() {
 
                 public void onClick(View v) {
@@ -155,73 +132,6 @@ public class NyDialog extends Dialog {
                     LayoutParams.WRAP_CONTENT);
         }
 
-        /**
-         * 验证码构造模块
-         */
-        private EditText inputEt;
-        private ImageView codeImg;
-        private ImageView refreshImg;
-        private RelativeLayout layout;
-
-        /**
-         * 短信验证码 图形CODE构造
-         *
-         * @param inputEt
-         * @param codeImg
-         * @param refreshImg
-         * @param layout
-         */
-        public void setCodeGraphicBuilder(EditText inputEt, ImageView codeImg, ImageView refreshImg, RelativeLayout layout) {
-            this.inputEt = inputEt;
-            this.codeImg = codeImg;
-            this.layout = layout;
-            this.refreshImg = refreshImg;
-        }
-
-        /**
-         * 购买 图形CODE 构造
-         *
-         * @param inputEt
-         * @param refreshImg
-         */
-        public void setCodeBuyBuilder(EditText inputEt, ImageView refreshImg) {
-            this.inputEt = inputEt;
-            this.refreshImg = refreshImg;
-        }
-
-        public void setThrouth(int tt) {
-            mDialog = new NyDialog(mActivity, tt);
-        }
-
-        /**
-         * 获取图形CODE-短信模块专用
-         */
-        public void showSmsCodeErr() {
-            if (layout == null && refreshImg == null && inputEt == null) return;
-            layout.setVisibility(View.VISIBLE);
-            refreshImg.performClick();
-            inputEt.setText("");
-            //三秒后消失
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    if (mActivity != null) {
-                        mActivity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                layout.setVisibility(View.INVISIBLE);
-                            }
-                        });
-                    }
-                }
-            }, 3000);
-        }
-
-        public void showBuyCodeErr() {
-            refreshImg.performClick();
-            inputEt.setText("");
-        }
 
         public void dismiss() {
             if (mDialog != null) mDialog.dismiss();
@@ -317,16 +227,6 @@ public class NyDialog extends Dialog {
             mDialog.mView.setBackgroundColor(resID);
             return this;
         }
-
-//         public Builder setTitleBackgroundColor(int color) {
-//         mDialog.mView.setTitleBackgroundColor(color);
-//         return this;
-//         }
-        //
-        // public Builder setContainerBackgroundColor(int color) {
-        // mDialog.mView.setContainerBackgroundColor(color);
-        // return this;
-        // }
 
         /**
          * set dialog背景
@@ -660,7 +560,5 @@ public class NyDialog extends Dialog {
 
 
     }
-    // ==========================================================================
-    // Inner/Nested Classes
-    // ==========================================================================
+
 }
