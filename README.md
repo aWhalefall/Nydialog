@@ -20,6 +20,14 @@ version 2 规划 预计10月份
 
 增加新的弹窗样式
 
+version 3 增加换肤
+
+这里只提供一个思路，具体技术文档请点击  http://write.blog.csdn.net/postlist?ticket=ST-150842-dgnnKbYrcYwIFmD0u9O4-passport.csdn.net
+
+
+
+
+
 功能：
 
    1.默认提供5中样式供参考
